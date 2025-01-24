@@ -1,135 +1,142 @@
 
-# File Sharing and Storage Service
+# File Management System - React App
 
-A backend system built using **Express.js** and **TypeScript** for efficient file sharing, storage, and management.
+This is a file-sharing and management system built with React for the frontend and integrated with a custom backend. It allows users to upload, download, and manage files seamlessly.
 
-✨ **Features**
-- 📂 **File Upload and Download Management** - Secure and scalable file handling.
-- 📜 **API Documentation** - Auto-generated API docs using Swagger.
-- 🛠️ **Modular Code Structure** - Organized codebase for easier maintenance and scalability.
-- 🔒 **Secure API Endpoints** - Authentication and role-based access control with JWT.
+## Features
 
-⚙️ **Prerequisites**
-- **Node.js** (version 14.x or higher)
-- **npm** or **pnpm** for package management
+- User authentication (login/logout)
+- File upload and download functionality
+- File listing with metadata (name, size, etc.)
+- Responsive and user-friendly interface
+- Integration with a backend API
+- Error handling for better user experience
 
----
+## Getting Started
 
-## 🚀 Installation
+Follow these steps to get the project up and running on your local machine.
 
-### 1. Clone the Repository
+### Prerequisites
 
-```bash
-git clone https://github.com/NGurneet/File-Sharing-and-Storage-Service.git  
-cd File-Sharing-and-Storage-Service
-```
+Make sure you have the following installed:
 
-### 2. Install Dependencies
+- [Node.js](https://nodejs.org/) (v14 or later)
+- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
+- A running instance of the backend API for the file management system
 
-If you're using `npm`:
+### Installation
 
-```bash
-npm install
-```
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/NGurneet/file-management-system-react-app.git
+   ```
 
-Or if you're using `pnpm`:
+2. Navigate to the project directory:
+   ```bash
+   cd file-management-system-react-app
+   ```
 
-```bash
-pnpm install
-```
+3. Install the dependencies:
+   ```bash
+   npm install
+   ```
 
-### 3. Set Up Environment Variables
+4. Create an `.env` file in the root directory and configure the backend API URL:
+   ```env
+   REACT_APP_API_BASE_URL=http://localhost:5000/api
+   ```
 
-Create your `.env` file by copying the example file:
+5. Start the development server:
+   ```bash
+   npm start
+   ```
 
-```bash
-cp env.example.production .env
-```
+6. Open the app in your browser:
+   ```
+   http://localhost:3000
+   ```
 
-Update the `.env` file with your respective configurations (e.g., database URLs, JWT secret, etc.).
+### Test Credentials
 
-### 4. Run the Development Server
+Use the following credentials to log in and test the application:
 
-Start the development server with the following command:
+- **Email:** `fionna@example.com`
+- **Password:** `fionna123`
 
-```bash
-npm run dev  
-```
+## Usage
 
-This will launch the server in development mode.
+1. **Login:** Enter the test credentials or create a new account using the backend system.
+2. **File Upload:** Upload files by navigating to the upload section and selecting files from your system.
+3. **File List:** View all uploaded files with their metadata.
+4. **Download Files:** Click on the "Download" button next to a file to download it to your system.
 
----
+## Project Structure
 
-## 🗂️ Project Structure
-
-The project is organized into the following folders for clarity and modularity:
-
-```
-app/
-    common/         # Shared utilities and constants
-    controllers/    # Handles API logic
-    file/           # File handling services (upload, download, etc.)
-    swagger/        # Swagger API documentation setup
-    user/           # User management (authentication, roles, etc.)
-    routes.ts       # Centralized API route definitions
-config/             # Application configuration files (e.g., database, app settings)
-uploads/            # Folder where files are uploaded
-Dockerfile          # Docker configuration for containerizing the app
-docker-compose.yml  # Docker Compose setup for running the app with all dependencies
-env.example.production # Example environment configuration for production
-index.ts            # Main entry point for the application
-nodemon.json        # Nodemon configuration for hot-reloading
-package.json        # Project metadata and scripts
-pnpm-lock.yaml      # Dependency lock file (for pnpm users)
-tsconfig.json       # TypeScript configuration
-```
-
----
-
-## 🛠️ Scripts
-
-### Available scripts for development and production environments:
-
-- `npm run dev` - Runs the server in development mode (with live reloading using Nodemon).
-- `npm run build` - Compiles the TypeScript files to JavaScript for production.
-- `npm run start` - Starts the server (in production or after building).
-- `docker-compose up` - Builds and starts the app with all dependencies in Docker (requires Docker and Docker Compose installed).
-
----
-
-## 📖 API Documentation
-
-You can find the **Swagger-generated API documentation** once the server is running at the following endpoint:
+The project is organized as follows:
 
 ```
-[BASE_URL]/api-docs
+src/
+├── components/       # Reusable components (e.g., FileList, UploadForm)
+├── features/         # RTK Query slices for API interactions
+├── pages/            # Main pages (e.g., FileExplorer, Login)
+├── theme/            # Custom MUI theme
+├── App.tsx           # Root app component
+└── index.tsx         # Entry point
 ```
 
-This provides detailed descriptions of all the available API endpoints, input/output formats, and authentication requirements.
+## API Endpoints
 
----
+The app communicates with the backend using the following API endpoints:
 
-## 🤝 Contributing
+- **POST /api/users/login:** User login
+- **POST /api/files/upload:** Upload a file
+- **GET /api/files:** Fetch all uploaded files
+- **GET /api/files/download/:id:** Download a file
 
-We welcome contributions! To contribute:
+## Technologies Used
 
-1. **Fork the repository** on GitHub.
-2. **Create a feature branch**:
+- **Frontend:** React, TypeScript, Redux Toolkit, Material-UI
+- **Backend:** Node.js, Express (see backend repository)
+- **State Management:** Redux Toolkit Query (RTK Query)
+- **Styling:** Material-UI (MUI)
+- **File Storage:** Cloudinary (or any other storage solution integrated into the backend)
+
+## Screenshots
+
+### Login Page
+![Login Page](https://via.placeholder.com/800x400?text=Login+Page)
+
+### File Explorer
+![File Explorer](https://via.placeholder.com/800x400?text=File+Explorer)
+
+## Known Issues
+
+- Ensure the backend is running and accessible at the specified API base URL.
+- File upload size limitations depend on the backend and storage configuration.
+
+## Contributing
+
+Contributions are welcome! Please follow these steps:
+
+1. Fork the repository.
+2. Create a feature branch:
    ```bash
    git checkout -b feature-name
    ```
-3. **Commit your changes**:
+3. Commit your changes:
    ```bash
-   git commit -m "Add feature"
+   git commit -m "Add a new feature"
    ```
-4. **Push your changes** to your branch:
+4. Push the branch:
    ```bash
    git push origin feature-name
    ```
-5. **Open a pull request** on GitHub and describe the changes you’ve made.
+5. Create a pull request.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
 
 ---
 
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+**Developer:** [Gurneet Singh](https://github.com/NGurneet)
